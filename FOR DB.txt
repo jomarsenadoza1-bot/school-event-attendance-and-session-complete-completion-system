@@ -86,17 +86,18 @@ erDiagram
         timestamptz created_at
     }
 
+
     PROFILES ||--o{ EVENTS : coordinates
     EVENTS ||--o{ SESSIONS : contains
 
     PROFILES ||--o{ REGISTRATIONS : registers
-    EVENTS ||--o{ REGISTRATIONS : has
+    EVENTS ||--o{ REGISTRATIONS : receives
 
-    REGISTRATIONS ||--o{ ATTENDANCE : records
-    SESSIONS ||--o{ ATTENDANCE : has
+    REGISTRATIONS ||--o{ ATTENDANCE : has
+    SESSIONS ||--o{ ATTENDANCE : records
 
-    REGISTRATIONS ||--o{ COMPLETION : records
-    SESSIONS ||--o{ COMPLETION : has
+    REGISTRATIONS ||--o{ COMPLETION : has
+    SESSIONS ||--o{ COMPLETION : tracks
 
     PROFILES ||--o{ AUDIT_LOGS : creates
 
