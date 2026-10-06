@@ -1,66 +1,105 @@
 erDiagram
 
-    USER {
-        int user_id PK
-        string username
-        string password
-        string first_name
-        string last_name
-        string email
-        string role
-        string account_status
+    PROFILES {
+        uuid user_id PK
+        text student_id
+        text username
+        text first_name
+        text last_name
+        text email
+        text contact_number
+        text role
+        text account_status
+        timestamptz created_at
+        timestamptz updated_at
     }
 
-    EVENT {
-        int event_id PK
-        int coordinator_id FK
-        string event_name
-        string description
+    EVENTS {
+        uuid event_id PK
+        uuid coordinator_id FK
+        text event_name
+        text description
         date event_date
-        string venue
-        string status
+        time start_time
+        time end_time
+        text venue
+        int capacity
+        date registration_start
+        date registration_end
+        text status
+        timestamptz created_at
+        timestamptz updated_at
     }
 
-    SESSION {
-        int session_id PK
-        int event_id FK
-        string session_name
-        string description
-        datetime start_time
-        datetime end_time
-        string status
+    SESSIONS {
+        uuid session_id PK
+        uuid event_id FK
+        text session_name
+        text description
+        date session_date
+        timestamptz start_time
+        timestamptz end_time
+        text venue
+        text status
+        timestamptz created_at
+        timestamptz updated_at
     }
 
-    REGISTRATION {
-        int registration_id PK
-        int student_id FK
-        int event_id FK
-        datetime registration_date
-        string registration_status
-        datetime cancellation_date
+    REGISTRATIONS {
+        uuid registration_id PK
+        uuid student_id FK
+        uuid event_id FK
+        timestamptz registration_date
+        text registration_status
+        uuid confirmed_by FK
+        timestamptz confirmed_at
+        timestamptz cancellation_date
     }
 
     ATTENDANCE {
-        int attendance_id PK
-        int registration_id FK
-        int session_id FK
-        string attendance_status
-        datetime attendance_time
+        uuid attendance_id PK
+        uuid registration_id FK
+        uuid session_id FK
+        text attendance_status
+        timestamptz attendance_time
+        text remarks
+        uuid recorded_by FK
     }
 
     COMPLETION {
-        int completion_id PK
-        int registration_id FK
-        int session_id FK
-        string completion_status
-        datetime completion_date
+        uuid completion_id PK
+        uuid registration_id FK
+        uuid session_id FK
+        text completion_status
+        text remarks
+        uuid approved_by FK
+        timestamptz completion_date
     }
 
-    USER ||--o{ EVENT : manages
-    EVENT ||--o{ SESSION : contains
-    USER ||--o{ REGISTRATION : submits
-    EVENT ||--o{ REGISTRATION : has
-    REGISTRATION ||--o{ ATTENDANCE : records
-    SESSION ||--o{ ATTENDANCE : has
-    REGISTRATION ||--o{ COMPLETION : records
-    SESSION ||--o{ COMPLETION : has
+    AUDIT_LOGS {
+        int log_id PK
+        uuid user_id FK
+        text action
+        text module
+        text record_id
+        text description
+        timestamptz created_at
+    }
+
+    PROFILES ||--o{ EVENTS : coordinates
+    EVENTS ||--o{ SESSIONS : contains
+
+    PROFILES ||--o{ REGISTRATIONS : registers
+    EVENTS ||--o{ REGISTRATIONS : has
+
+    REGISTRATIONS ||--o{ ATTENDANCE : records
+    SESSIONS ||--o{ ATTENDANCE : has
+
+    REGISTRATIONS ||--o{ COMPLETION : records
+    SESSIONS ||--o{ COMPLETION : has
+
+    PROFILES ||--o{ AUDIT_LOGS : creates
+
+    PROFILES ||--o{ REGISTRATIONS : confirms
+    PROFILES ||--o{ ATTENDANCE : records
+    PROFILES ||--o{ COMPLETION : approves
