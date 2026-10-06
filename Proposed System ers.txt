@@ -1,0 +1,818 @@
+Proposed System Title
+
+School Event Attendance and Session Completion Management System
+
+A web-based system that allows school personnel to create events and sessions, register participants, record attendance, monitor session completion, and generate reports.
+
+1. Users
+
+Use 2 main roles to satisfy the minimum requirement.
+
+User Role	Main Responsibilities
+Administrator / Event Coordinator	Manage users, events, sessions, registrations, attendance, completion status, and reports
+Student / Participant	Log in, view available events and sessions, register for events, view attendance, and check session completion
+Optional third role
+
+Attendance Staff – can scan/record attendance and update session completion but cannot manage users or system settings.
+
+2. Main Functional Modules
+
+Your system needs at least 4 meaningful modules. I recommend 6 modules so your defense has enough functionality.
+
+Module 1 — User and Account Management
+
+Admin can:
+
+Create users
+Edit users
+Deactivate users
+Assign roles
+Search users
+Login/logout
+
+Student can:
+
+Login/logout
+View account information
+Module 2 — Event Management
+
+Admin can:
+
+Create school events
+Edit events
+Archive/cancel events
+Search events
+Filter by status/date
+Set event capacity
+
+Example:
+
+School Seminar 2026
+October 15, 2026
+Capacity: 100 participants
+
+Module 3 — Session Management
+
+Admin can:
+
+Add sessions under an event
+Set session title
+Set date/time
+Assign venue
+Set session status
+Edit/delete sessions
+
+Example:
+
+Session 1 – Orientation
+8:00 AM – 9:00 AM
+AVR Room
+
+Module 4 — Registration Management
+
+Students can:
+
+View available events
+Register for an event
+Cancel registration
+
+Admin can:
+
+View registered participants
+Confirm/reject registration
+Search participants
+Filter registrations
+Module 5 — Attendance and Session Completion
+
+Admin/Attendance Staff can:
+
+Record attendance
+Update attendance
+Mark Present, Late, Absent, or Excused
+Mark session as Completed/Incomplete
+View participant attendance history
+
+Student can:
+
+View attendance records
+View completed sessions
+Module 6 — Dashboard, Reports, and History
+
+Admin can see:
+
+Total events
+Total registered students
+Present students
+Absent students
+Completed sessions
+Upcoming sessions
+
+Reports can include:
+
+Event attendance report
+Student attendance history
+Session completion report
+Registration report
+
+The system should also maintain an activity/audit history.
+
+3. System Requirements
+Functional Requirements
+
+The system must support:
+
+Requirement	Example
+Create	Create event/session/student record
+View	View event and attendance records
+Update	Edit event, session, attendance
+Delete/Archive	Archive cancelled event
+Search	Search student by ID/name
+Filter	Filter attendance by event/status/date
+Sorting	Sort participants alphabetically
+Workflow	Registration → Attendance → Completion
+Dashboard	Show totals and summaries
+History	Show changes and attendance activity
+4. Important Business Rules
+
+You need at least 3 meaningful business rules. I recommend these 6:
+
+Business Rule 1 — Registration
+
+Only registered participants can have attendance records for an event session.
+
+Example:
+
+Student A is not registered for Event 001 → Student A cannot be marked present.
+
+Business Rule 2 — Duplicate Attendance
+
+A participant can only have one attendance record per session.
+
+So the database should prevent:
+
+Student 1001 + Session 001 + Present
+Student 1001 + Session 001 + Present
+
+from being entered twice.
+
+Business Rule 3 — Session Completion
+
+A participant can only be marked as completed when their attendance satisfies the session requirement.
+
+For example:
+
+Present = eligible for completion
+Late = eligible for completion
+Absent = not eligible
+Excused = subject to coordinator approval
+
+Business Rule 4 — Event Capacity
+
+The number of confirmed registrations cannot exceed the event capacity.
+
+Example:
+
+Capacity = 50
+Confirmed participants cannot become 51.
+
+Business Rule 5 — Session Schedule
+
+A session must belong to an existing event and its schedule must fall within the event schedule.
+
+Business Rule 6 — Account Security
+
+Passwords must be stored using secure password hashing and never as plain text.
+
+5. Main System Process
+
+The overall workflow can be:
+
+Admin creates Event
+        ↓
+Admin creates Sessions
+        ↓
+Student logs in
+        ↓
+Student registers for Event
+        ↓
+Admin confirms registration
+        ↓
+Student attends Session
+        ↓
+Attendance is recorded
+        ↓
+Session completion is recorded
+        ↓
+Student views completion status
+        ↓
+Admin generates reports
+
+This workflow is very good for your defense because it connects almost every module.
+
+6. Data Needed
+
+The system can use these main data items:
+
+User
+user_id
+username
+password_hash
+role
+status
+Student
+student_id
+user_id
+student_number
+full_name
+course
+year_level
+contact_number
+Event
+event_id
+event_name
+description
+event_date
+location
+capacity
+status
+created_by
+Session
+session_id
+event_id
+session_name
+session_date
+start_time
+end_time
+venue
+status
+Registration
+registration_id
+event_id
+student_id
+registration_date
+status
+Attendance
+attendance_id
+session_id
+student_id
+attendance_status
+check_in_time
+remarks
+Session Completion
+completion_id
+session_id
+student_id
+completion_status
+completed_at
+verified_by
+Audit Log
+log_id
+user_id
+action
+table_name
+record_id
+action_date
+7. ERD Structure
+
+A clean ERD could look like this:
+
+USERS
+-----
+PK user_id
+username
+password_hash
+role
+status
+
+        1
+        │
+        │
+        1
+STUDENTS
+--------
+PK student_id
+FK user_id
+student_number
+full_name
+course
+year_level
+contact_number
+        │
+        │ 1
+        │
+        │ M
+REGISTRATIONS
+-------------
+PK registration_id
+FK student_id
+FK event_id
+registration_date
+status
+
+EVENTS
+------
+PK event_id
+event_name
+description
+event_date
+location
+capacity
+status
+created_by
+        │
+        │ 1
+        │
+        │ M
+SESSIONS
+--------
+PK session_id
+FK event_id
+session_name
+session_date
+start_time
+end_time
+venue
+status
+        │
+        ├───────────────┐
+        │               │
+        │ 1             │ 1
+        │               │
+        │ M             │ M
+ATTENDANCE       SESSION_COMPLETION
+----------       ------------------
+PK attendance_id PK completion_id
+FK session_id    FK session_id
+FK student_id    FK student_id
+status           status
+check_in_time    completed_at
+remarks          verified_by
+
+And:
+
+USERS
+  │
+  │ 1:M
+  ↓
+AUDIT_LOGS
+8. Relationships
+
+The important relationships are:
+
+User 1 ─── 1 Student
+Event 1 ─── M Session
+Student 1 ─── M Registration
+Event 1 ─── M Registration
+Student 1 ─── M Attendance
+Session 1 ─── M Attendance
+Student 1 ─── M Session Completion
+Session 1 ─── M Session Completion
+User 1 ─── M Audit Log
+
+This structure is also suitable for a 3NF database because event information, student information, session information, attendance, and registration are separated instead of placing everything in one large table.
+
+9. Context DFD
+
+At the Context level, treat the whole application as one process.
+
+                ┌──────────────────────┐
+                │       STUDENT        │
+                │     / PARTICIPANT    │
+                └──────────┬───────────┘
+                           │
+             Login / Registration /
+             Attendance Requests
+                           │
+                           ↓
+        ┌─────────────────────────────────────┐
+        │                                     │
+        │  SCHOOL EVENT ATTENDANCE &          │
+        │  SESSION COMPLETION SYSTEM          │
+        │                                     │
+        └─────────────────────────────────────┘
+                           │
+             Event Details /
+             Attendance Status /
+             Completion Results
+                           │
+                           ↓
+                ┌──────────────────────┐
+                │ ADMIN / EVENT        │
+                │ COORDINATOR          │
+                └──────────────────────┘
+
+More accurately, both external entities exchange data with the system:
+
+Student → System
+Login information
+Registration request
+Event selection
+Profile information
+System → Student
+Event information
+Registration status
+Attendance status
+Session completion status
+Admin → System
+User information
+Event information
+Session information
+Attendance records
+Completion updates
+Report requests
+System → Admin
+Participant records
+Attendance reports
+Completion reports
+Dashboard summaries
+Activity history
+10. Level 0 DFD
+
+Break the system into major processes.
+
+                 STUDENT
+                    │
+                    ↓
+          ┌───────────────────┐
+          │ 1.0 USER &        │
+          │ ACCOUNT MANAGEMENT │
+          └─────────┬─────────┘
+                    │
+                    ↓
+               [D1 USERS]
+                    │
+                    │
+ADMIN ──────────────┐
+                    ↓
+          ┌───────────────────┐
+          │ 2.0 EVENT &       │
+          │ SESSION MANAGEMENT│
+          └─────────┬─────────┘
+                    │
+             [D2 EVENTS]
+                    │
+                    ↓
+             [D3 SESSIONS]
+                    │
+                    │
+STUDENT ────────────┼──────────────→
+                    ↓
+          ┌───────────────────┐
+          │ 3.0 REGISTRATION  │
+          └─────────┬─────────┘
+                    │
+             [D4 REGISTRATIONS]
+                    │
+                    ↓
+          ┌───────────────────┐
+          │ 4.0 ATTENDANCE &  │
+          │ COMPLETION        │
+          └───────┬───────────┘
+                  │
+        ┌─────────┴─────────┐
+        ↓                   ↓
+[D5 ATTENDANCE]      [D6 COMPLETION]
+        │                   │
+        └─────────┬─────────┘
+                  ↓
+          ┌───────────────────┐
+          │ 5.0 REPORTING &   │
+          │ ACTIVITY HISTORY  │
+          └─────────┬─────────┘
+                    │
+              [D7 AUDIT LOGS]
+11. Level 1 DFD
+
+For Level 1, I recommend decomposing Process 4.0 Attendance & Completion because it is one of the most important processes in your system.
+
+                 ADMIN / STAFF
+                      │
+                      ↓
+              ┌───────────────┐
+              │ 4.1 Select    │
+              │ Event/Session │
+              └───────┬───────┘
+                      │
+                      ↓
+                [D2 EVENTS]
+                [D3 SESSIONS]
+                      │
+                      ↓
+              ┌───────────────┐
+              │ 4.2 Validate  │
+              │ Registration  │
+              └───────┬───────┘
+                      │
+                 [D4 REGISTRATION]
+                      │
+                      ↓
+              ┌───────────────┐
+              │ 4.3 Record    │
+              │ Attendance    │
+              └───────┬───────┘
+                      │
+                [D5 ATTENDANCE]
+                      │
+                      ↓
+              ┌───────────────┐
+              │ 4.4 Evaluate  │
+              │ Completion    │
+              └───────┬───────┘
+                      │
+                [D6 COMPLETION]
+                      │
+                      ↓
+              ┌───────────────┐
+              │ 4.5 Update    │
+              │ History       │
+              └───────┬───────┘
+                      │
+                [D7 AUDIT LOG]
+                      │
+                      ↓
+                 STUDENT
+          Attendance / Completion
+                 Status
+12. Dashboard
+
+Your dashboard should demonstrate that the system provides summary information.
+
+Admin Dashboard
+┌─────────────────────────────────────────────────┐
+│       SCHOOL EVENT MANAGEMENT DASHBOARD         │
+├────────────┬────────────┬────────────┬──────────┤
+│ Total      │ Registered │ Present    │ Completed│
+│ Events     │ Students   │ Attendance │ Sessions │
+│    12      │    356     │    298     │    41    │
+├────────────┴────────────┴────────────┴──────────┤
+│ Upcoming Events                                 │
+│                                                 │
+│ Orientation 2026       Oct 10      85 students  │
+│ Leadership Seminar     Oct 15      63 students  │
+│ IT Workshop            Oct 20      45 students  │
+└─────────────────────────────────────────────────┘
+13. Search and Filtering
+
+Make sure your actual system demonstrates these.
+
+Event Search
+[ Search event... ] [Status ▼] [Date ▼]
+Participant Search
+[ Search student name/ID... ] [Course ▼]
+Attendance Filter
+[Event ▼] [Session ▼] [Attendance Status ▼]
+
+Possible statuses:
+
+Present
+Late
+Absent
+Excused
+14. Status Workflow
+
+This is important because the instructions specifically require status/workflow processing.
+
+Event
+Draft
+  ↓
+Published
+  ↓
+Ongoing
+  ↓
+Completed
+
+or
+
+Published → Cancelled
+Registration
+Pending
+   ↓
+Confirmed
+   ↓
+Attended / Completed
+
+or
+
+Pending → Cancelled
+Session Completion
+Pending
+   ↓
+Eligible
+   ↓
+Completed
+
+or
+
+Eligible → Incomplete
+15. Technology Stack
+
+For a student project that needs a real deployed website, a simple stack would be:
+
+Frontend
+
+HTML + CSS + JavaScript
+or React
+
+Backend
+
+PHP + MySQL
+
+This is especially practical if you are already comfortable with VS Code and PHP/MySQL.
+
+Database
+
+MySQL
+
+Production hosting
+
+A PHP/MySQL-compatible hosting service such as:
+
+InfinityFree for a basic academic prototype
+AwardSpace
+A paid shared hosting service for more reliable production use
+
+For the defense, make sure the deployed URL actually works from another device.
+
+16. Suggested Database Tables
+
+A practical production database is:
+
+users
+students
+events
+sessions
+registrations
+attendance
+session_completions
+audit_logs
+
+You could also add:
+
+notifications
+event_categories
+
+but they are not necessary for the minimum requirements.
+
+17. Example Realistic Records
+
+Don't demonstrate the system with only one or two records.
+
+Students
+2026-0001 | Juan Dela Cruz | BSIS | 2
+2026-0002 | Maria Santos   | BSIT | 2
+2026-0003 | Carlo Reyes    | BSCS | 3
+2026-0004 | Ana Garcia     | BSIS | 1
+2026-0005 | Mark Ramos     | BSIT | 4
+Events
+E001 | Student Orientation 2026
+E002 | Leadership Seminar 2026
+E003 | IT Skills Workshop
+E004 | School Foundation Day
+Sessions
+S001 | E001 | Opening Orientation
+S002 | E001 | School Policies
+S003 | E002 | Leadership Talk
+S004 | E002 | Team Building
+S005 | E003 | Web Development Workshop
+Attendance
+Juan  | Opening Orientation | Present
+Maria | Opening Orientation | Late
+Carlo | Opening Orientation | Absent
+Ana   | Opening Orientation | Present
+Mark  | Opening Orientation | Excused
+
+This gives you something meaningful to demonstrate during defense.
+
+18. Security Requirements
+
+Your implementation should visibly satisfy these:
+
+Password
+
+Never store:
+
+password = "12345678"
+
+Store a hash instead:
+
+$2y$10$................................
+
+For PHP, use:
+
+password_hash($password, PASSWORD_DEFAULT);
+
+and:
+
+password_verify($password, $storedHash);
+Role Protection
+
+Example:
+
+Student
+→ Events
+→ My Registration
+→ My Attendance
+→ My Completion
+
+Admin
+→ Dashboard
+→ Users
+→ Events
+→ Sessions
+→ Registrations
+→ Attendance
+→ Completion
+→ Reports
+→ Audit Logs
+
+A student must not be able to manually open an admin page just by changing the URL.
+
+19. Defense Demonstration Flow
+
+Your group can demonstrate the system in this order:
+
+1. Login as Admin
+        ↓
+2. Show Dashboard
+        ↓
+3. Create an Event
+        ↓
+4. Add Sessions
+        ↓
+5. Login as Student
+        ↓
+6. Register for Event
+        ↓
+7. Login as Admin
+        ↓
+8. Confirm Registration
+        ↓
+9. Record Attendance
+        ↓
+10. Mark Session Completion
+        ↓
+11. Login as Student
+        ↓
+12. Show Attendance/Completion
+        ↓
+13. Return to Admin
+        ↓
+14. Generate/Show Reports
+        ↓
+15. Show Audit History
+
+That single scenario demonstrates most of the required functionality.
+
+20. Requirement-to-System Checklist
+Teacher Requirement	Your System
+2 user roles	Admin + Student
+Login/logout	✅
+Role-based access	✅
+Input validation	✅
+Hashed passwords	✅
+No exposed credentials	✅
+4 major modules	✅ 6 modules
+Production database	✅ MySQL
+Related tables	✅
+PK/FK	✅
+Persistent data	✅
+Create	✅
+View	✅
+Edit	✅
+Delete/archive	✅
+Search	✅
+Filtering/sorting	✅
+Status workflow	✅
+3+ business rules	✅ 6 rules
+Dashboard	✅
+Activity history	✅ Audit Logs
+Realistic records	✅
+Recommended Final System Structure
+SCHOOL EVENT ATTENDANCE &
+SESSION COMPLETION SYSTEM
+│
+├── Authentication
+│   ├── Login
+│   └── Logout
+│
+├── ADMIN
+│   ├── Dashboard
+│   ├── User Management
+│   ├── Event Management
+│   ├── Session Management
+│   ├── Registration Management
+│   ├── Attendance Management
+│   ├── Session Completion
+│   ├── Reports
+│   └── Audit History
+│
+└── STUDENT
+    ├── Dashboard
+    ├── Available Events
+    ├── My Registrations
+    ├── My Attendance
+    └── My Session Completion
+
+This gives you a strong foundation where the requirements → DFD → ERD → database → frontend → backend → deployed system can all use the same terminology and relationships.
+
+For the next step, I would build the complete 3NF MySQL schema + Context DFD + Level 0 DFD + Level 1 DFD + ERD in a consistent format, then use that as the blueprint for your actual VS Code project.
