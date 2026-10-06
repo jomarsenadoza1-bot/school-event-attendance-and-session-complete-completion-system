@@ -1,0 +1,178 @@
+/* ============================================
+   SEAMS - Profile Page
+   ============================================ */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* ---- Card ---- */
+.profile-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 26px 26px;
+}
+
+.profile-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* ---- Avatar + identity row ---- */
+.account-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.account-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: var(--dark-green-bg);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+.account-id { min-width: 0; }
+
+.account-sid {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+.account-email {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    word-break: break-all;
+}
+
+/* ---- Form ---- */
+.account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted-dark, #7a7a7a);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.form-group .req { color: #c0392b; }
+
+.form-control {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    color: var(--text-dark);
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.form-control:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 3px rgba(27, 94, 71, 0.08);
+}
+
+.field-hint {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+.signin-info {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+
+/* ---- Buttons ---- */
+.btn-primary {
+    align-self: flex-start;
+    background: var(--accent-green);
+    color: #ffffff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+.btn-primary:hover { background: #144a37; }
+
+.btn-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-with-icon svg {
+    width: 14px; height: 14px;
+    stroke: currentColor;
+}
+
+/* ---- Pills ---- */
+.pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.pill-gray { background: #e8e8e8; color: #6b7280; }
+
+/* ---- Toast / inline feedback ---- */
+.form-message {
+    margin-top: 12px;
+    font-size: 0.82rem;
+    padding: 9px 12px;
+    border-radius: 6px;
+    display: none;
+}
+.form-message.show { display: block; }
+.form-message.success {
+    background: #e8f5e9;
+    color: #1b5e47;
+    border: 1px solid #c8e6c9;
+}
+.form-message.error {
+    background: #fdecea;
+    color: #b71c1c;
+    border: 1px solid #f5c6cb;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .profile-grid { grid-template-columns: 1fr; }
+}

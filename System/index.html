@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAMS - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Left Panel (Dark) -->
+    <div class="left-panel">
+        <div class="circle-top-right"></div>
+        <div class="circle-bottom-left"></div>
+
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+                </svg>
+            </div>
+            SEAMS
+        </div>
+
+        <div class="hero-content">
+            <div class="subtitle">Mabini Integrated School</div>
+            <h1 class="hero-title">School Event Attendance and Session Completion Management System</h1>
+            <p class="hero-desc">Centralized Event, Attendance, Registration, and Session Monitoring System</p>
+        </div>
+
+        <div class="features">
+            <a href="register.html" class="feature-item" style="text-decoration:none; color:inherit;">
+                <h3>Register</h3>
+                <p>Students sign up and get confirmed</p>
+            </a>
+            <div class="feature-item">
+                <h3>Record</h3>
+                <p>Fast, rule-checked attendance</p>
+            </div>
+            <div class="feature-item">
+                <h3>Report</h3>
+                <p>Completion and audit trail</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Panel (Light) -->
+    <div class="right-panel">
+        <div class="form-container">
+            <h2>Welcome back</h2>
+            <p class="form-subtitle">Sign in with your User ID, Student ID or school email.</p>
+
+            <form action="#" method="POST" id="loginForm">
+                <div class="form-group">
+                    <label for="login-userId">User ID / Student ID / Email</label>
+                    <input type="text" id="login-userId" name="userId" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="login-password" name="password" class="form-control" required>
+                        <div class="password-toggle" onclick="togglePassword('login-password', this)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <label class="remember-me">
+                        <input type="checkbox" checked>
+                        Remember me
+                    </label>
+                    <a href="#" class="link-text">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Sign in</button>
+
+                <p class="switch-form-text">
+                    Don't have an account? 
+                    <a href="register.html" class="link-text">Register here</a>
+                </p>
+            </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
