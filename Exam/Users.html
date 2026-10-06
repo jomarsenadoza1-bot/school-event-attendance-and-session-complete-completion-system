@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SEAMS - Users</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f5f2ed; color: #1e293b; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .bg-sidebar { background-color: #0d221c; }
+    .bg-header { background-color: #13382c; }
+    .bg-gold { background-color: #d99b26; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-sidebar text-slate-300 flex flex-col justify-between p-4 flex-shrink-0">
+    <div>
+      <div class="flex items-center gap-3 mb-8 px-2 pt-2">
+        <div class="w-10 h-10 rounded-xl bg-gold flex items-center justify-center text-slate-900 font-bold text-xl">🎓</div>
+        <div>
+          <h1 class="font-serif font-bold text-white text-lg leading-tight">SEAMS</h1>
+          <p class="text-[11px] text-slate-400">Mabini Integrated School</p>
+        </div>
+      </div>
+      <nav class="space-y-1 text-sm font-medium">
+        <a href="index.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">📊 Dashboard</a>
+        <a href="users.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-slate-800/80 text-white font-semibold">👥 Users</a>
+        <a href="events.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">📅 Events</a>
+        <a href="sessions.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">📚 Sessions</a>
+        <a href="registrations.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">⏳ Registrations</a>
+        <a href="attendance.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">📋 Attendance</a>
+        <a href="completion.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">✅ Completion</a>
+        <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">📈 Reports</a>
+        <a href="activity-history.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">🕒 Activity History</a>
+        <a href="profile.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/40">👤 Profile</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-y-auto flex flex-col p-8 space-y-6">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="font-serif text-3xl font-bold text-slate-900">Users Directory</h1>
+        <p class="text-sm text-slate-500">Manage students and system administrators.</p>
+      </div>
+      <button class="bg-[#13382c] text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-[#0d221c] transition">+ Add User</button>
+    </div>
+
+    <!-- Empty Table -->
+    <div class="bg-white border border-stone-200 rounded-xl overflow-hidden">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-[#13382c] text-white text-xs uppercase font-semibold">
+          <tr>
+            <th class="p-3">User ID</th>
+            <th class="p-3">Full Name</th>
+            <th class="p-3">Email</th>
+            <th class="p-3">Role</th>
+            <th class="p-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" class="p-12 text-center text-slate-400">
+              No user records found in database. Click <strong>+ Add User</strong> to insert a new student or admin.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>
