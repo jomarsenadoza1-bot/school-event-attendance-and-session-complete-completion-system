@@ -1,0 +1,66 @@
+erDiagram
+
+    USER {
+        int user_id PK
+        string username
+        string password
+        string first_name
+        string last_name
+        string email
+        string role
+        string account_status
+    }
+
+    EVENT {
+        int event_id PK
+        int coordinator_id FK
+        string event_name
+        string description
+        date event_date
+        string venue
+        string status
+    }
+
+    SESSION {
+        int session_id PK
+        int event_id FK
+        string session_name
+        string description
+        datetime start_time
+        datetime end_time
+        string status
+    }
+
+    REGISTRATION {
+        int registration_id PK
+        int student_id FK
+        int event_id FK
+        datetime registration_date
+        string registration_status
+        datetime cancellation_date
+    }
+
+    ATTENDANCE {
+        int attendance_id PK
+        int registration_id FK
+        int session_id FK
+        string attendance_status
+        datetime attendance_time
+    }
+
+    COMPLETION {
+        int completion_id PK
+        int registration_id FK
+        int session_id FK
+        string completion_status
+        datetime completion_date
+    }
+
+    USER ||--o{ EVENT : manages
+    EVENT ||--o{ SESSION : contains
+    USER ||--o{ REGISTRATION : submits
+    EVENT ||--o{ REGISTRATION : has
+    REGISTRATION ||--o{ ATTENDANCE : records
+    SESSION ||--o{ ATTENDANCE : has
+    REGISTRATION ||--o{ COMPLETION : records
+    SESSION ||--o{ COMPLETION : has
