@@ -1,0 +1,136 @@
+/* ============================================
+   SEAMS - Session Completion Page
+   ============================================ */
+
+.completion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+/* ---- Event card ---- */
+.comp-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comp-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+/* ---- Progress row ---- */
+.comp-progress-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.comp-progress-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+.comp-progress-count {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.comp-progress-track {
+    height: 8px;
+    background: #ecebe6;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+.comp-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+.comp-progress-fill.empty {
+    background: #ecebe6;
+}
+.comp-progress-fill.partial {
+    background: linear-gradient(90deg, #1b5e47 0%, #8a7a2a 100%);
+}
+.comp-progress-fill.full {
+    background: linear-gradient(90deg, #1b5e47 0%, #c49a45 100%);
+}
+
+/* ---- Session rows ---- */
+.comp-sessions {
+    display: flex;
+    flex-direction: column;
+}
+
+.comp-session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+}
+.comp-session:first-child {
+    border-top: none;
+    padding-top: 4px;
+}
+
+.comp-session-info { min-width: 0; }
+
+.comp-session-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+.comp-session-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Pills group on the right */
+.comp-pills {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* ---- Pills ---- */
+.pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.pill-green { background: #d9efe1; color: #1b5e47; }
+.pill-gray  { background: #e8e8e8; color: #6b7280; }
+
+/* Single-wide "not yet recorded" pill takes a bit more room */
+.pill-wide {
+    padding: 5px 14px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1000px) {
+    .completion-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .comp-card { padding: 18px; }
+    .comp-session { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .comp-pills { width: 100%; }
+}

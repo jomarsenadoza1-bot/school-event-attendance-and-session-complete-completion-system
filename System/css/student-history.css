@@ -1,0 +1,127 @@
+/* ============================================
+   SEAMS - Participation History Page
+   ============================================ */
+
+.history-timeline {
+    position: relative;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 1100px;
+}
+
+/* The vertical line */
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: #d9d4c8;
+}
+
+/* Each item: dot + card */
+.history-item {
+    position: relative;
+}
+
+/* The gold dot */
+.history-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 0 0 4px var(--light-bg);
+}
+
+/* ---- Card ---- */
+.history-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    transition: box-shadow 0.15s;
+}
+.history-card:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+/* Left content */
+.history-info { min-width: 0; flex: 1; }
+
+.history-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.history-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.history-counts {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+}
+.history-counts .num {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Right pills group */
+.history-pills {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    align-items: center;
+    padding-top: 4px;
+}
+
+/* ---- Pills ---- */
+.pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.pill-green { background: #d9efe1; color: #1b5e47; }
+.pill-blue  { background: #d9e6ff; color: #214f9b; }
+.pill-gold  { background: #f4ecd9; color: #8a6b1f; }
+.pill-gray  { background: #e8e8e8; color: #6b7280; }
+.pill-red   { background: #fbe0e0; color: #a52222; }
+
+/* ---- Empty state ---- */
+.history-empty {
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.hidden { display: none !important; }
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+    .history-timeline { padding-left: 26px; }
+    .history-item::before { left: -24px; }
+    .history-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .history-pills { padding-top: 0; }
+}

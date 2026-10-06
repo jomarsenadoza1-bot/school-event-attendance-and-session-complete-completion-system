@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEAMS - Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="left-panel">
+        <div class="circle-top-right"></div>
+        <div class="circle-bottom-left"></div>
+
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/>
+                </svg>
+            </div>
+            SEAMS
+        </div>
+
+        <div class="hero-content">
+            <div class="subtitle">Mabini Integrated School</div>
+            <h1 class="hero-title">School Event Attendance and Session Completion Management System</h1>
+            <p class="hero-desc">Centralized Event, Attendance, Registration, and Session Monitoring System</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-item"><h3>Register</h3><p>Students sign up and get confirmed</p></div>
+            <div class="feature-item"><h3>Record</h3><p>Fast, rule-checked attendance</p></div>
+            <div class="feature-item"><h3>Report</h3><p>Completion and audit trail</p></div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="form-container">
+            <h2>Create an account</h2>
+            <p class="form-subtitle">Enter your details to register for SEAMS.</p>
+
+            <form action="#" method="POST" id="registerForm" novalidate>
+
+                <!-- First + Last name -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-firstname">First Name</label>
+                        <input type="text" id="reg-firstname" name="first_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-lastname">Last Name</label>
+                        <input type="text" id="reg-lastname" name="last_name" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Username -->
+                <div class="form-group">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" class="form-control" required>
+                </div>
+
+                <!-- Student ID (nullable) -->
+                <div class="form-group">
+                    <label for="reg-studentid">Student ID <span style="color:#a0a8a3; font-weight:400;">(optional)</span></label>
+                    <input type="text" id="reg-studentid" name="student_id" class="form-control">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" name="email" class="form-control" required>
+                </div>
+
+                <!-- Contact number (nullable) -->
+                <div class="form-group">
+                    <label for="reg-contact">Contact Number <span style="color:#a0a8a3; font-weight:400;">(optional)</span></label>
+                    <input type="tel" id="reg-contact" name="contact_number" class="form-control" placeholder="09XXXXXXXXX">
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="reg-password" name="password" class="form-control" required minlength="6">
+                        <div class="password-toggle" onclick="togglePassword('reg-password', this)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirm password -->
+                <div class="form-group">
+                    <label for="reg-confirm">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="reg-confirm" name="confirmPassword" class="form-control" required>
+                        <div class="password-toggle" onclick="togglePassword('reg-confirm', this)">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" style="margin-top: 10px;">Sign Up</button>
+
+                <p class="switch-form-text">
+                    Already have an account?
+                    <a href="index.html" class="link-text">Sign in here</a>
+                </p>
+
+                <div class="message" id="registerMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>
