@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/student-dashboard.css">
     <link rel="stylesheet" href="css/student-attendance.css">
     <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/student-qr.css">
 </head>
 <body>
 
@@ -83,7 +84,7 @@
                 </svg>
                 Profile
             </a>
-            <a href="#" class="nav-item" onclick="logout()">
+            <a href="index.html" class="nav-item" onclick="logout()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/>
                     <polyline points="16 17 21 12 16 7"/>
@@ -135,10 +136,26 @@
         <div class="content">
 
             <!-- Page header -->
-            <div class="page-header">
-                <h1 class="page-title">My attendance</h1>
-                <p class="page-sub">Your attendance record for every session.</p>
-            </div>
+            <!-- Page header -->
+<div class="page-header" style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+    <div>
+        <h1 class="page-title">My attendance</h1>
+        <p class="page-sub">Your attendance record for every session.</p>
+    </div>
+    <button id="showQrBtn" class="btn-qr">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <line x1="14" y1="14" x2="14" y2="14.01"/>
+            <line x1="21" y1="14" x2="21" y2="14.01"/>
+            <line x1="14" y1="21" x2="14" y2="21.01"/>
+            <line x1="17" y1="17" x2="21" y2="21"/>
+            <line x1="21" y1="17" x2="17" y2="21"/>
+        </svg>
+        Show my QR
+    </button>
+</div>
 
             <!-- Filter bar -->
             <div class="filter-bar">
@@ -199,9 +216,43 @@
         </div>
     </main>
 
+    <!-- QR Modal -->
+<div class="qr-overlay hidden" id="qrOverlay">
+    <div class="qr-modal">
+        <button class="qr-close" id="qrClose" aria-label="Close">&times;</button>
+
+        <div class="qr-modal-head">
+            <h2 class="qr-modal-title">Your attendance QR</h2>
+            <p class="qr-modal-sub">Show this to the event coordinator to be checked in.</p>
+        </div>
+
+        <div class="qr-canvas-wrap">
+            <canvas id="qrCanvas"></canvas>
+        </div>
+
+        <div class="qr-identity">
+            <div class="qr-avatar" id="qrAvatar">JD</div>
+            <div>
+                <div class="qr-name" id="qrName">Juan Dela Cruz</div>
+                <div class="qr-id" id="qrId">Student ID: 2026-0001</div>
+            </div>
+        </div>
+
+        <button class="qr-download" id="qrDownload">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download QR
+        </button>
+    </div>
 </div>
 
-<script src="js/attendance.js"></script>
-<script src="js/notifications.js"></script>
+</div>
+
+<script type="module" src="js/attendance.js"></script>
+<script type="module" src="js/qr.js"></script>
+<script type="module" src="js/notifications.js"></script>
 </body>
 </html>

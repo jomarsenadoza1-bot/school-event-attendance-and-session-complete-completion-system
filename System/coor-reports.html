@@ -14,62 +14,35 @@
 </head>
 <body class="flex h-screen overflow-hidden">
 
-  <!-- Sidebar -->
   <aside class="w-64 bg-[#0c221a] text-slate-300 flex flex-col justify-between p-4 flex-shrink-0 h-screen select-none">
     <div>
       <div class="flex items-center gap-3 mb-6 px-2 pt-2">
-        <div class="w-10 h-10 rounded-xl bg-[#c89228] flex items-center justify-center text-slate-900 font-bold text-lg shadow-inner">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-[#c89228] flex items-center justify-center text-slate-900 font-bold text-lg shadow-inner"><i class="fa-solid fa-graduation-cap"></i></div>
         <div>
           <h1 class="font-serif font-bold text-white text-lg leading-tight tracking-wide">SEAMS</h1>
           <p class="text-[11px] text-slate-400">Mabini Integrated School</p>
         </div>
       </div>
-
       <nav class="space-y-1 text-sm font-medium">
-        <a href="events.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-regular fa-calendar-days w-5 text-center text-base"></i> Events
-        </a>
-        <a href="sessions.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-solid fa-layer-group w-5 text-center text-base"></i> Sessions
-        </a>
-        <a href="registrations.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-solid fa-ticket w-5 text-center text-base"></i> Registrations
-        </a>
-        <a href="attendance.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-regular fa-clipboard w-5 text-center text-base"></i> Attendance
-        </a>
-        <a href="completion.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-regular fa-square-check w-5 text-center text-base"></i> Completion
-        </a>
-        <a href="reports.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg bg-[#18392d] text-white font-semibold border-l-4 border-[#c89228] transition">
-          <i class="fa-solid fa-chart-simple w-5 text-center text-base"></i> Reports
-        </a>
-        <a href="activity-history.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-solid fa-clock-rotate-left w-5 text-center text-base"></i> Activity History
-        </a>
-        <a href="profile.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-regular fa-user w-5 text-center text-base"></i> Profile
-        </a>
-        <a href="settings.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-solid fa-gear w-5 text-center text-base"></i> Settings
-        </a>
-        <a href="login.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition">
-          <i class="fa-solid fa-right-from-bracket w-5 text-center text-base"></i> Logout
-        </a>
+        <a href="coor-dashboard.html"        class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-chart-pie w-5 text-center text-base"></i> Dashboard</a>
+        <a href="coor-users.html"            class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-user-group w-5 text-center text-base"></i> Users</a>
+        <a href="coor-events.html"           class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-regular fa-calendar-days w-5 text-center text-base"></i> Events</a>
+        <a href="coor-session.html"          class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-layer-group w-5 text-center text-base"></i> Sessions</a>
+        <a href="coor-registrations.html"    class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-ticket w-5 text-center text-base"></i> Registrations</a>
+        <a href="coor-attendance.html"       class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-regular fa-clipboard w-5 text-center text-base"></i> Attendance</a>
+        <a href="coor-completion.html"       class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-regular fa-square-check w-5 text-center text-base"></i> Completion</a>
+        <a href="coor-reports.html"          class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg bg-[#18392d] text-white font-semibold border-l-4 border-[#c89228] transition"><i class="fa-solid fa-chart-simple w-5 text-center text-base"></i> Reports</a>
+        <a href="coor-activity-history.html" class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-clock-rotate-left w-5 text-center text-base"></i> Activity History</a>
+        <a href="coor-profile.html"          class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-regular fa-user w-5 text-center text-base"></i> Profile</a>
+        <a href="coor-settings.html"         class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-gear w-5 text-center text-base"></i> Settings</a>
+        <a href="index.html" onclick="logout()"       class="flex items-center gap-3.5 px-3 py-2.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#18392d]/60 transition"><i class="fa-solid fa-right-from-bracket w-5 text-center text-base"></i> Logout</a>
       </nav>
     </div>
-
     <div class="pt-4 border-t border-slate-800/80 flex items-center gap-3 px-1">
-      <div class="w-9 h-9 rounded-full bg-[#c89228] flex items-center justify-center font-bold text-slate-900 text-xs shadow-sm">
-        EC
-      </div>
+      <div class="w-9 h-9 rounded-full bg-[#c89228] flex items-center justify-center font-bold text-slate-900 text-xs shadow-sm">EC</div>
       <div class="leading-tight">
         <p class="text-xs font-semibold text-white">Event Coordinator</p>
-        <span class="inline-block px-2 py-0.5 text-[10px] bg-purple-900/50 text-purple-200 border border-purple-700/50 rounded-full font-semibold mt-0.5">
-          ● Administrator
-        </span>
+        <span class="inline-block px-2 py-0.5 text-[10px] bg-purple-900/50 text-purple-200 border border-purple-700/50 rounded-full font-semibold mt-0.5">● Administrator</span>
       </div>
     </div>
   </aside>
@@ -78,41 +51,39 @@
     <header class="p-4 border-b border-stone-300/60 bg-[#f5f2ed] flex justify-between items-center sticky top-0 z-10">
       <div class="relative w-96">
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-        <input type="text" placeholder="Search events and people..." class="w-full pl-9 pr-4 py-2 rounded-full border border-stone-300 bg-white/80 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c221a]">
+        <input type="text" placeholder="Search reports..." class="w-full pl-9 pr-4 py-2 rounded-full border border-stone-300 bg-white/80 text-sm focus:outline-none focus:ring-2 focus:ring-[#0c221a]">
       </div>
       <div class="flex items-center gap-4">
-        <button class="relative text-slate-600 hover:text-slate-900 p-1">
-          <i class="fa-regular fa-bell text-lg"></i>
-          <span class="absolute -top-0.5 -right-0.5 bg-[#c89228] text-slate-900 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">4</span>
-        </button>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-[#0c221a] text-white flex items-center justify-center font-bold text-xs">EC</div>
-          <span class="text-xs font-semibold text-slate-700">Event</span>
-        </div>
+        <button class="relative text-slate-600 p-1"><i class="fa-regular fa-bell text-lg"></i><span class="absolute -top-0.5 -right-0.5 bg-[#c89228] text-slate-900 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">4</span></button>
+        <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-[#0c221a] text-white flex items-center justify-center font-bold text-xs">EC</div><span class="text-xs font-semibold text-slate-700">Event</span></div>
       </div>
     </header>
 
-    <div class="p-8 space-y-6">
-      <div>
-        <h1 class="font-serif text-3xl font-bold text-[#0c221a]">Reports & Analytics</h1>
-        <p class="text-sm text-slate-500 mt-1">Export event summaries, participation rate, and metrics.</p>
-      </div>
+    <div class="p-8 space-y-6 max-w-7xl">
+      <div class="flex justify-between items-center">
+  <div><h1 class="font-serif text-3xl font-bold text-[#0c221a]">Reports & Analytics</h1><p class="text-sm text-slate-500 mt-1">Export event statistical summaries and attendance metrics.</p></div>
+  <button id="exportCsv" class="px-4 py-2.5 bg-[#0c221a] text-white rounded-lg text-sm font-semibold hover:bg-[#18392d] transition flex items-center gap-2 shadow-sm">
+    <i class="fa-solid fa-file-csv"></i> Export CSV
+  </button>
+</div>
 
       <div class="grid grid-cols-3 gap-6">
-        <div class="bg-white/80 border border-stone-200 rounded-xl p-5 shadow-sm">
-          <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Attendance Rate</p>
-          <p class="text-3xl font-bold text-[#0c221a] mt-2">94.2%</p>
+        <div class="bg-white/80 border border-stone-200 rounded-2xl p-6 shadow-sm">
+          <p class="text-xs font-bold uppercase text-slate-500 tracking-wider">Attendance Rate</p>
+          <p class="text-3xl font-bold text-[#0c221a] mt-2" id="rateEl">0%</p>
         </div>
-        <div class="bg-white/80 border border-stone-200 rounded-xl p-5 shadow-sm">
-          <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Registrations</p>
-          <p class="text-3xl font-bold text-[#0c221a] mt-2">1,240</p>
+        <div class="bg-white/80 border border-stone-200 rounded-2xl p-6 shadow-sm">
+          <p class="text-xs font-bold uppercase text-slate-500 tracking-wider">Total Registrations</p>
+          <p class="text-3xl font-bold text-[#0c221a] mt-2" id="regsEl">0</p>
         </div>
-        <div class="bg-white/80 border border-stone-200 rounded-xl p-5 shadow-sm">
-          <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Completed Sessions</p>
-          <p class="text-3xl font-bold text-[#0c221a] mt-2">18</p>
+        <div class="bg-white/80 border border-stone-200 rounded-2xl p-6 shadow-sm">
+          <p class="text-xs font-bold uppercase text-slate-500 tracking-wider">Completed Sessions</p>
+          <p class="text-3xl font-bold text-[#0c221a] mt-2" id="compEl">0</p>
         </div>
       </div>
     </div>
   </main>
+
+  <script type="module" src="js/coor-reports.js"></script>
 </body>
 </html>
